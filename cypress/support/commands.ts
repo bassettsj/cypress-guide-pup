@@ -1,4 +1,7 @@
-import { initVirtualScreenReader } from '../../src/index';
+import './virtual-screen-reader';
 
-// Initialize the virtual screen reader commands
-initVirtualScreenReader(); 
+// Import commands.js using ES2015 syntax:
+import './commands'
+
+// Alternatively you can use CommonJS syntax:
+// require('./commands') 
