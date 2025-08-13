@@ -1,4 +1,6 @@
-import { virtual, Virtual } from '@guidepup/virtual-screen-reader';
+/// <reference types="cypress" />
+import { virtual } from '@guidepup/virtual-screen-reader';
+import type { Virtual } from '@guidepup/virtual-screen-reader';
 
 declare global {
   interface Window {
@@ -9,8 +11,8 @@ declare global {
 declare global {
   namespace Cypress {
     interface Chainable {
-      injectVirtualScreenReader: typeof injectVirtualScreenReader;
-      virtual: () => Cypress.Chainable<Virtual>;
+      injectVirtualScreenReader(): Chainable<void>;
+      virtual(): Chainable<Virtual>;
     }
   }
 }
@@ -20,8 +22,17 @@ export interface InjectOptions {
 }
 
 export const injectVirtualScreenReader = (injectOptions?: InjectOptions) => {
+  cy.log('Starting to inject virtual screen reader...');
   cy.window({ log: false }).then((win) => {
-    win.virtualScreenReader = virtual();
+    try {
+      cy.log('Setting virtual instance to window...');
+      // virtual is already an instance, not a function
+      win.virtualScreenReader = virtual;
+      cy.log('Virtual screen reader injected into window');
+    } catch (error) {
+      cy.log('Error initializing virtual screen reader:', error);
+      throw error;
+    }
   });
 };
 
