@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive test suite with 4 passing tests
 - Example test page for accessibility testing
 - Documentation including README, API docs, and Quick Start guide
+- GitHub Actions CI/CD pipeline with automated testing
+- .nvmrc file for consistent Node.js version management
 
 ### Features
 - Virtual screen reader initialization and management
@@ -30,8 +32,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Built with TypeScript and ES modules
 - Compatible with Cypress 10+
 - Compatible with @guidepup/virtual-screen-reader 0.32.0+
-- Node.js 18+ support
+- Node.js 20+ support (simplified from multi-version support)
 - MIT License
+- Automated CI/CD with GitHub Actions
 
 ## [Unreleased]
 

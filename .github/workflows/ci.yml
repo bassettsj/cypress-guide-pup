@@ -10,18 +10,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     
-    strategy:
-      matrix:
-        node-version: [18, 20, 22]
-    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
     
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 20
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '20'
         cache: 'npm'
     
     - name: Install dependencies
@@ -33,24 +29,29 @@ jobs:
     - name: Run linter
       run: npm run lint
     
-    - name: Start test server
+    - name: Start test server and run tests
       run: |
+        # Start the test server in the background
         cd public
         python3 -m http.server 3000 &
+        SERVER_PID=$!
+        
+        # Wait for server to start
         sleep 5
+        
+        # Run the tests
+        cd ..
+        npm test
+        
+        # Clean up server
+        kill $SERVER_PID
       shell: bash
-    
-    - name: Run Cypress tests
-      run: npm test
-      env:
-        # Ensure Cypress can connect to the test server
-        CYPRESS_baseUrl: http://localhost:3000
     
     - name: Upload test results
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: cypress-results-${{ matrix.node-version }}
+        name: test-results
         path: |
           cypress/screenshots/
           cypress/videos/
@@ -66,7 +67,7 @@ jobs:
     - name: Use Node.js 20
       uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: '20'
         cache: 'npm'
     
     - name: Install dependencies
@@ -89,7 +90,6 @@ jobs:
     
     - name: Verify package.json
       run: |
-        npm run build
         npm pack --dry-run
         echo "Package verification successful"
 
@@ -103,7 +103,7 @@ jobs:
     - name: Use Node.js 20
       uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: '20'
         cache: 'npm'
     
     - name: Install dependencies

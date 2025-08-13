@@ -24,24 +24,40 @@ npm install cypress-guide-pup
 
 ## 📋 Prerequisites
 
-- Node.js 18+ 
+- Node.js 20+
 - Cypress 10+
 - @guidepup/virtual-screen-reader 0.32.0+
 
 ## 🔧 Setup
 
-### 1. Import the library in your Cypress support file
+### 1. Ensure you have the correct Node.js version
+
+This project uses Node.js 20. If you use nvm, you can automatically switch to the correct version:
+
+```bash
+nvm use
+```
+
+Or manually install Node.js 20+ from [nodejs.org](https://nodejs.org/).
+
+### 2. Install the package
+
+```bash
+npm install cypress-guidepup
+```
+
+### 3. Import the library in your Cypress support file
 
 ```typescript
 // cypress/support/commands.ts
-import 'cypress-guide-pup';
+import 'cypress-guidepup';
 ```
 
-### 2. Initialize the virtual screen reader
+### 4. Initialize the virtual screen reader
 
 ```typescript
 // cypress/support/e2e.ts or cypress/support/index.ts
-import { initVirtualScreenReader } from 'cypress-guide-pup';
+import { initVirtualScreenReader } from 'cypress-guidepup';
 
 initVirtualScreenReader();
 ```
