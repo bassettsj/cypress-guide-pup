@@ -1,5 +1,5 @@
 {
-  "name": "cypress-guide-pup",
+  "name": "cypress-guidepup",
   "version": "1.0.0",
   "description": "A Node.js library to simplify using Guidepup virtual screen reader with Cypress for accessibility testing",
   "type": "module",
@@ -13,6 +13,7 @@
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "test": "cypress run",
+    "test:open": "cypress open",
     "lint": "eslint . --ext .ts",
     "prepublishOnly": "npm run build"
   },
@@ -24,13 +25,19 @@
     "screen-reader",
     "testing",
     "automation",
-    "cypress-plugin"
+    "cypress-plugin",
+    "virtual-screen-reader",
+    "accessibility-testing"
   ],
-  "author": "",
+  "author": "bassettsj",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bassettsj/cypress-guide-pup.git"
+    "url": "https://github.com/bassettsj/cypress-guidepup.git"
+  },
+  "homepage": "https://github.com/bassettsj/cypress-guidepup#readme",
+  "bugs": {
+    "url": "https://github.com/bassettsj/cypress-guidepup/issues"
   },
   "peerDependencies": {
     "@guidepup/virtual-screen-reader": ">=0.32.0",
