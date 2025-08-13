@@ -1,5 +1,8 @@
 # Cypress Guidepup
 
+[![CI](https://github.com/bassettsj/cypress-guidepup/workflows/CI/badge.svg)](https://github.com/bassettsj/cypress-guidepup/actions)
+[![Cypress Tests](https://github.com/bassettsj/cypress-guidepup/workflows/Cypress%20Tests/badge.svg)](https://github.com/bassettsj/cypress-guidepup/actions)
+
 A Node.js library to simplify using Guidepup virtual screen reader with Cypress for accessibility testing.
 
 ## 🎯 Purpose

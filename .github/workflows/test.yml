@@ -1,0 +1,55 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build project
+      run: npm run build
+    
+    - name: Start test server and run tests
+      run: |
+        # Start the test server in the background
+        cd public
+        python3 -m http.server 3000 &
+        SERVER_PID=$!
+        
+        # Wait for server to start
+        sleep 5
+        
+        # Run the tests
+        cd ..
+        npm test
+        
+        # Clean up server
+        kill $SERVER_PID
+      shell: bash
+    
+    - name: Upload test artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results
+        path: |
+          cypress/screenshots/
+          cypress/videos/
+          cypress/downloads/
