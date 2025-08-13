@@ -4,4 +4,4 @@ import './virtual-screen-reader';
 import './commands'
 
 // Alternatively you can use CommonJS syntax:
-// require('./commands') 
+// require('./commands')

@@ -14,7 +14,8 @@
     "prebuild": "npm run clean",
     "test": "cypress run",
     "test:open": "cypress open",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -46,8 +47,14 @@
   "devDependencies": {
     "@guidepup/virtual-screen-reader": "^0.32.1",
     "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "cypress": "^14.4.1",
     "eslint": "^8.0.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0",
     "rimraf": "^5.0.0",
     "typescript": "^5.0.0"
   },

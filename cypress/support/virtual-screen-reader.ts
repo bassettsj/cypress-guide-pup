@@ -46,4 +46,4 @@ export const getVirtualScreenReader = () => {
 };
 
 Cypress.Commands.add('injectVirtualScreenReader', injectVirtualScreenReader);
-Cypress.Commands.add('virtual', getVirtualScreenReader); 
+Cypress.Commands.add('virtual', getVirtualScreenReader);

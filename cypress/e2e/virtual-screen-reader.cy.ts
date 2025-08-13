@@ -10,10 +10,10 @@ describe('Virtual Screen Reader Tests', () => {
     cy.virtual().then((virtual) => {
       // Start the virtual screen reader
       virtual.start();
-      
+
       // Navigate to the first element (should be the page title)
       virtual.next();
-      
+
       // Assert that we're on the main heading
       virtual.itemText().then((text) => {
         expect(text).to.contain('Virtual Screen Reader Test Page');
@@ -29,7 +29,7 @@ describe('Virtual Screen Reader Tests', () => {
 
       // Navigate to the next element (should be navigation)
       virtual.next();
-      
+
       // Assert we're on the navigation
       virtual.itemText().then((text) => {
         expect(text).to.contain('Main Content');
@@ -40,7 +40,7 @@ describe('Virtual Screen Reader Tests', () => {
 
       // Navigate to the next element (should be welcome section)
       virtual.next();
-      
+
       // Assert we're on the welcome content
       virtual.itemText().then((text) => {
         expect(text).to.contain('Welcome to the Test Page');
@@ -181,4 +181,4 @@ describe('Virtual Screen Reader Tests', () => {
       virtual.stop();
     });
   });
-}); 
+});

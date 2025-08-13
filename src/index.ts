@@ -1,4 +1,4 @@
-import { virtual, Virtual } from "@guidepup/virtual-screen-reader";
+import { virtual, Virtual } from '@guidepup/virtual-screen-reader';
 
 declare global {
   namespace Cypress {
@@ -8,7 +8,7 @@ declare global {
        * @example cy.startVirtualScreenReader()
        */
       startVirtualScreenReader(): Chainable<void>
-      
+
       /**
        * Stop the virtual screen reader
        * @example cy.stopVirtualScreenReader()
@@ -24,13 +24,13 @@ let virtualScreenReader: Virtual | null = null;
  * Initialize the virtual screen reader commands for Cypress
  * @example
  * import { initVirtualScreenReader } from 'cypress-guide-pup';
- * 
+ *
  * // In your cypress/support/commands.ts:
  * initVirtualScreenReader();
  */
 export function initVirtualScreenReader() {
   const cypress = (window as any).Cypress;
-  
+
   cypress.Commands.add('startVirtualScreenReader', () => {
     return cypress.document().then(async (doc: Document) => {
       if (!virtualScreenReader) {
